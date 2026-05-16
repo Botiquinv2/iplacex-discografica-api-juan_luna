@@ -4,8 +4,8 @@ WORKDIR /app
 COPY . .
 RUN gradle clean build -x test
 
-# Stage 2: Ejecución con OpenJDK
-FROM openjdk:17-jdk-slim
+# Stage 2: Ejecución con Java
+FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 COPY --from=build /app/build/libs/discografia-1.jar app.jar
 EXPOSE 8080
